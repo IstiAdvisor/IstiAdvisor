@@ -14,19 +14,18 @@ class User {
 }
 
 class Workplacement {
-	constructor(id, user_id, lieu, ville, pays, date_debut, date_fin)
+	constructor(id, user_id, lieu, ville, pays, annee)
 	{
 		this.id = id;
 		this.user_id = user_id;
 		this.lieu = lieu;
 		this.ville = ville;
 		this.pays = pays;
-		this.date_debut = date_debut;
-		this.date_fin = date_fin;
+		this.annee = annee;
 	}
 	
 	print(){
-		return ("Workplacement{"+this.id+","+this.user_id+","+this.lieu+","+this.ville+","+this.pays+","+this.date_debut+","+this.date_fin+"}");
+		return ("Workplacement{"+this.id+","+this.user_id+","+this.lieu+","+this.ville+","+this.pays+","+this.annee+"}");
 	}
 }
 
@@ -69,12 +68,12 @@ var bdd_user = [new User(0,"Cueille","Vincent","VCueille","AGI"),
 				new User(4,"TestQsf","TestQsf","TestQsf","QSF"),
 				new User(5,"TestIno","TestIno","TestIno","INNO")];
 				
-var bdd_stage = [new Workplacement(10,0,"UFMG","Belo Horizonte","Brésil","04/05/2015","01/08/2015"),
-				 new Workplacement(11,1,"HITLABNZ","Christchurch","Nouvelle-Zélande","04/05/2015","01/08/2015"),
-				 new Workplacement(12,2,"University of Zielona Gora","Zielona Gora","Pologne","04/05/2015","01/08/2015"),
-				 new Workplacement(13,3,"Universidad National de Ingenieria","Lima","Pérou","04/05/2015","01/08/2015"),
-				 new Workplacement(14,4,"Université des QSF","Vierzon","France","04/05/2015","01/08/2015"),
-				 new Workplacement(15,5,"Université des INNO","Moscou","Russie","04/05/2015","01/08/2015")];
+var bdd_stage = [new Workplacement(10,0,"UFMG","Belo Horizonte","Brésil","2015"),
+				 new Workplacement(11,1,"HITLABNZ","Christchurch","Nouvelle-Zélande","2015"),
+				 new Workplacement(12,2,"University of Zielona Gora","Zielona Gora","Pologne","2015"),
+				 new Workplacement(13,3,"Universidad National de Ingenieria","Lima","Pérou","2015"),
+				 new Workplacement(14,4,"Université des QSF","Vierzon","France","2015"),
+				 new Workplacement(15,5,"Université des INNO","Moscou","Russie","2015")];
 
 var bdd_keypoint = [new Keypoint(20, "Macdo UFMG", "Restaurant", "Belo Horizonte", "Brésil", "2015"),
 					new Keypoint(21, "M. Aldair Ferderas", "Location", "Angers", "France", "2015")];
@@ -113,6 +112,81 @@ function findUserByPrenomNom(prenom, nom) {
 	return null;
 }
 
-//			########################
+function findUsersByCursus(cursus) {
+	var results = [];
+	for(var i = 0; i < bdd_user.length; i++)
+	{
+		if(bdd_user[i].cursus === cursus)
+			results.push(bdd_user[i]);
+	}
+	return results;
+}
 
+//			#################################
+//			::: GESTION BDD WORKPLACEMENT :::
 
+function findWorkplacementById(id)
+{
+	for(var i = 0; i < bdd_stage.length; i++)
+	{
+		if(bdd_stage[i].id === id)
+			return bdd_stage[i];
+	}
+	return null;
+}
+
+function findWorkplacementsByPays(pays)
+{
+	var results = [];
+	for(var i = 0; i < bdd_stage.length; i++)
+	{
+		if(bdd_stage[i].pays === pays)
+			results.push(bdd_stage[i]);
+	}
+	return results;
+}
+
+function findWorkplacementsByVille(ville)
+{
+	var results = [];
+	for(var i = 0; i < bdd_stage.length; i++)
+	{
+		if(bdd_stage[i].ville === ville)
+			results.push(bdd_stage[i]);
+	}
+	return results;
+}
+
+function findWorkplacementsByLieu(Lieu)
+{
+	var results = [];
+	for(var i = 0; i < bdd_stage.length; i++)
+	{
+		if(bdd_stage[i].ville === ville)
+			results.push(bdd_stage[i]);
+	}
+	return results;
+}
+
+function findWorkplacementsByAnnee(annee)
+{
+	var results = [];
+	for(var i = 0; i < bdd_stage.length; i++)
+	{
+		if(bdd_stage[i].annee === annee)
+			results.push(bdd_stage[i]);
+	}
+	return results;
+}
+
+function findWorkPlacementsByCursus(cursus)
+{
+	var results = [];
+	for(var i = 0; i < bdd_stage.length; i++)
+	{
+		var user = findUserById(bdd_stage[i].user_id);
+		if(user.cursus === cursus)
+			results.push(bdd_stage[i]);
+	}
+	return results;
+}
