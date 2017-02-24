@@ -11,7 +11,7 @@
 		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&language=fr"></script>
+		<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&language=fr"></script>-->
 		<script src="scripts/main.js"></script>
 		<script src="scripts/bdd.js"></script>
 	</head>
@@ -34,6 +34,9 @@
 					<p align="center"> <label>Ville</label> : <input type="text" id="ville"/> 
 						<input type="button" value="Chercher ville" href="lien" align="center" onclick="TrouverVille();"/>
 					</p>
+					<p align="center"> <label>Cursus</label> : <input type="text" id="cursus"/> 
+						<input type="button" value="Chercher cursus" href="lien" align="center" onclick="SearchByCursus();"/>
+					</p>
 				</form>
 				<br>
 			</article>
@@ -45,6 +48,7 @@
 						<tr>
 							<td> 
 								<h2> Description de la destination </h2>
+								<p id="Test">  </p>
 							</td>
 						</tr>
 			    </table>
@@ -63,6 +67,25 @@
     		background-attachment: fixed; 	
 		}
 	</style>
+	
+	<script>
+		$(document).ready(function() 
+		{
+			geocoder = new google.maps.Geocoder();
+		//Initialisation de Google Maps
+		  var mapOptions = 
+		  {
+		    zoom: 3,
+		    center: new google.maps.LatLng(52.629729, -1.131592)
+		  };
+		
+		  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+		
+		// Test:
+		var test_zone = document.getElementById('Test');
+		test_zone.innerHTML = test_zone.innerHTML + findUserBySurnom("VCueille").print();
+		});
+	</script>
 	
 
 </html>

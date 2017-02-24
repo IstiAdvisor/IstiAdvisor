@@ -16,19 +16,6 @@ function initialiserCarte()
   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 }
 
-$(document).ready(function() 
-{
-	geocoder = new google.maps.Geocoder();
-//Initialisation de Google Maps
-  var mapOptions = 
-  {
-    zoom: 3,
-    center: new google.maps.LatLng(52.629729, -1.131592)
-  };
-
-  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-
-});
 function TrouverPays() {
   // Récupération de l'adresse tapée dans le formulaire
   var pays = document.getElementById('pays').value;
@@ -51,6 +38,7 @@ function TrouverPays() {
     }
   });
 }
+
 function TrouverVille() {
   // Récupération de l'adresse tapée dans le formulaire
   var ville = document.getElementById('ville').value;
