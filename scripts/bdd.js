@@ -247,4 +247,48 @@ function findKeypointsByTypePays(type, pays)
 	return results;
 }
 
+//			################################
+//			::: GESTION BDD Commentaires :::
 
+function findCommentaireById(id)
+{
+	for(var i = 0; i < bdd_commentaire.length; i++)
+	{
+		if(bdd_commentaire[i].id === id)
+			return bdd_commentaire[i];
+	}
+	return null;
+}
+
+function findCommentairesByUserId(id_user)
+{
+	var results = [];
+	for(var i = 0; i < bdd_commentaire.length; i++)
+	{
+		if(bdd_commentaire[i].id_user === id_user)
+			results.push(bdd_commentaire[i]);
+	}
+	return results;
+}
+
+function findCommentairesByKeypointId(id_keypoint)
+{
+	var results = [];
+	for(var i = 0; i < bdd_commentaire.length; i++)
+	{
+		if(bdd_commentaire[i].id_keypoint === id_keypoint)
+			results.push(bdd_commentaire[i]);
+	}
+	return results;
+}
+
+function findCommentairesByUserIdKeypointId(id_user, id_keypoint)
+{
+	var results = [];
+	for(var i = 0; i < bdd_commentaire.length; i++)
+	{
+		if(bdd_commentaire[i].id_user === id_user && bdd_commentaire[i].id_keypoint === id_keypoint)
+			results.push(bdd_commentaire[i]);
+	}
+	return results;
+}
