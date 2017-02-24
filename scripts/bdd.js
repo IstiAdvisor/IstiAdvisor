@@ -190,3 +190,61 @@ function findWorkPlacementsByCursus(cursus)
 	}
 	return results;
 }
+
+//			#############################
+//			::: GESTION BDD KeyPoints :::
+
+function findWorkplacementById(id)
+{
+	for(var i = 0; i < bdd_keypoint.length; i++)
+	{
+		if(bdd_keypoint[i].id === id)
+			return bdd_keypoint[i];
+	}
+	return null;
+}
+
+function findWorkplacementByNom(nom)
+{
+	for(var i = 0; i < bdd_keypoint.length; i++)
+	{
+		if(bdd_keypoint[i].nom === nom)
+			return bdd_keypoint[i];
+	}
+	return null;
+}
+
+function findKeypointsByType(type)
+{
+	var results = [];
+	for(var i = 0; i < bdd_keypoint.length; i++)
+	{
+		if(bdd_keypoint[i].type === type)
+			results.push(bdd_keypoint[i]);
+	}
+	return results;
+}
+
+function findKeypointsByTypeVille(type, ville)
+{
+	var results = [];
+	for(var i = 0; i < bdd_keypoint.length; i++)
+	{
+		if(bdd_keypoint[i].type === type && bdd_keypoint[i].ville === ville)
+			results.push(bdd_keypoint[i]);
+	}
+	return results;
+}
+
+function findKeypointsByTypePays(type, pays)
+{
+	var results = [];
+	for(var i = 0; i < bdd_keypoint.length; i++)
+	{
+		if(bdd_keypoint[i].type === type && bdd_keypoint[i].pays === pays)
+			results.push(bdd_keypoint[i]);
+	}
+	return results;
+}
+
+
