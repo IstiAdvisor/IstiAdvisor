@@ -1,0 +1,25 @@
+body
+{
+	background-repeat:no-repeat;
+	background-attachment: scroll; 	
+}
+		
+h1
+{
+	
+}
+
+#bonplans
+{
+		text-align: right;
+}
+
+#search
+{
+	margin: auto;
+}
+
+#description
+{
+	margin-left:60%;
+}
